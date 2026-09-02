@@ -5,3 +5,7 @@ name: Viber API Test
 text
 on:
   workflow_dispatch:
+text
+jobs:
+  test-viber:
+    runs-on: ubuntu-latest
