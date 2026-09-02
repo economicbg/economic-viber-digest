@@ -9,3 +9,32 @@ text
 jobs:
   test-viber:
     runs-on: ubuntu-latest
+text
+    steps:
+      - name: Test Viber API
+        env:
+          VIBER_AUTH_TOKEN: ${{ secrets.VIBER_AUTH_TOKEN }}
+          VIBER_FROM_ID: ${{ secrets.VIBER_FROM_ID }}
+        run: |
+          python - <<'PY'
+          import os
+          import json
+          import urllib.request
+
+          data = {
+              "auth_token": os.environ["VIBER_AUTH_TOKEN"],
+              "from": os.environ["VIBER_FROM_ID"],
+              "type": "text",
+              "text": "TEST - ⁨economic.bg⁩ Viber API"
+          }
+
+          request = urllib.request.Request(
+              "⁨https://chatapi.viber.com/pa/post⁩",
+              data=json.dumps(data).encode("utf-8"),
+              headers={"Content-Type": "application/json"},
+              method="POST"
+          )
+
+          with urllib.request.urlopen(request) as response:
+              print(⁨response.read⁩().decode("utf-8"))
+          PY
