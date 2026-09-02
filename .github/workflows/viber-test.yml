@@ -1,3 +1,4 @@
+yaml
 name: Viber API Test
 
 on:
@@ -16,5 +17,5 @@ jobs:
           curl -sS \
             -X POST \
             -H "Content-Type: application/json" \
-            -d "{\"auth_token\":\"$VIBER_AUTH_TOKEN\",\"from\":\"$VIBER_FROM_ID\",\"type\":\"text\",\"text\":\"🧪 Тестова публикация от ⁨economic.bg⁩\"}" \
+            -d "{\"auth_token\":\"$VIBER_AUTH_TOKEN\",\"from\":\"$VIBER_FROM_ID\",\"type\":\"text\",\"text\":\"TEST - ⁨economic.bg⁩ Viber API\"}" \
             ⁨https://chatapi.viber.com/pa/post⁩
